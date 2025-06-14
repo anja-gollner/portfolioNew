@@ -1,11 +1,46 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import '../styles/global.css';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<html lang="de">
+  <head>
+    <title>Anja Gollner - Selbstständig</title>
+  </head>
+  <body class="bg-neutral text-text">
+    <Header />
+
+    <main class="container mx-auto p-4 pt-20"> <!-- pt-20 für den Abstand vom fixierten Header -->
+      <!-- Skills Section -->
+      <section id="skills" class="min-h-screen">
+        <h2 class="text-3xl font-bold text-primary text-center mb-6">Skills</h2>
+        <p class="text-center mb-6">Hier sind meine Fähigkeiten...</p>
+      </section>
+
+      <!-- Über uns Section -->
+      <section id="about" class="min-h-screen">
+        <h2 class="text-3xl font-bold text-primary text-center mb-6">Über uns</h2>
+        <p class="text-center mb-6">Ich bin Anja Gollner, eine leidenschaftliche Selbstständige...</p>
+      </section>
+
+      <!-- Portfolio Section -->
+      <section id="portfolio" class="min-h-screen">
+        <h2 class="text-3xl font-bold text-primary text-center mb-6">Portfolio</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <ServiceCard title="Beratung" description="Individuelle Beratung für dein Projekt." />
+          <ServiceCard title="Design" description="Kreative Lösungen für dein Branding." />
+        </div>
+      </section>
+
+      <!-- Kontakt Section -->
+      <section id="contact" class="min-h-screen">
+        <h2 class="text-3xl font-bold text-primary text-center mb-6">Kontakt</h2>
+        <p class="text-center mb-6">Schreib mir: <a href="mailto:anja@anjagollner.com" class="text-accent underline">anja@anjagollner.com</a></p>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>

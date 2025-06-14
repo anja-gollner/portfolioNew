@@ -1,0 +1,47 @@
+---
+const { title = "Anja Gollner - Selbstständig" } = Astro.props;
+const navItems = [
+  { href: "#skills", label: "Skills" },
+  { href: "#about", label: "Über uns" },
+  { href: "#portfolio", label: "Portfolio" },
+  { href: "#contact", label: "Kontakt" },
+];
+---
+
+<header class="bg-main text-white p-4 shadow-md flex items-center justify-between fixed w-full z-10">
+  <div class="flex items-center">
+    <div class="text-2xl font-bold text-primary mr-4">AG</div> <!-- Platzhalter für dein @ag-Logo -->
+  </div>
+  <div class="flex items-center">
+  <nav class="flex space-x-6">
+      {navItems.map((item) => (
+        <a href={item.href} class="hover:text-text-hover text-white font-light">{item.label}</a>
+      ))}
+    </nav>
+  <a href="#contact" class="bg-black-dark text-white px-4 py-2 rounded-full hover:bg-black-light transition">
+    <span>Jetzt Anfragen</span>
+    <span class="ml-2">→</span>
+  </a>
+  </div>
+</header>
+
+<script>
+  // Typisierung mit Element und Null-Checks für getAttribute
+  const anchors = document.querySelectorAll('a[href^="#"]');
+  if (anchors) {
+    anchors.forEach((anchor: Element, _: number, __: NodeListOf<Element>) => {
+      anchor.addEventListener('click', function (this: Element, e: Event) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        if (href) {
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+  }
+</script>
