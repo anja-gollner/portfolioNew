@@ -8,7 +8,8 @@ const navItems = [
 ];
 ---
 
-<header class="bg-black text-white px-4 py-4 shadow-md fixed w-full z-10">
+<header id="main-header" class="bg-black text-white px-4 py-4 shadow-md fixed w-full z-10 transition-colors duration-300">
+
   <div class="max-w-[1440px] mx-auto w-full flex items-center justify-between">
     
     <div class="flex items-center">
@@ -23,11 +24,12 @@ const navItems = [
       </nav>
 
       <a href="#contact" class="relative group border border-primary text-primary rounded-full pl-6 pr-14 py-2 inline-flex items-center transition hover:bg-primary hover:text-black">
-        <span class="text-base font-medium">Jetzt Anfragen</span>
-        <span class="absolute right-1 w-9 h-9 bg-primary text-black rounded-full flex items-center justify-center transition group-hover:bg-black group-hover:text-primary">
-          →
-        </span>
-      </a>
+  <span class="text-base font-medium">Jetzt Anfragen</span>
+  <span class="absolute right-1 w-9 h-9 bg-primary text-black rounded-full flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
+    →
+  </span>
+</a>
+
     </div>
     
   </div>
@@ -54,4 +56,37 @@ const navItems = [
       });
     });
   }
+
+ const header = document.getElementById('main-header')!;
+
+function updateHeaderBackground() {
+  if (window.scrollY > 50) {
+    header.classList.add('bg-opacity-70', 'backdrop-blur-md', 'shrink');
+  } else {
+    header.classList.remove('bg-opacity-70', 'backdrop-blur-md', 'shrink');
+  }
+}
+
+window.addEventListener('scroll', updateHeaderBackground);
+updateHeaderBackground();
+
+
+
+
+
 </script>
+
+<style>
+#main-header {
+  height: 112px;         
+  padding: 16px 16px;   
+  transition: height 0.3s ease, padding 0.3s ease;
+}
+
+#main-header.shrink {
+  height: 82px;          
+  padding: 10px 16px;  
+}
+
+
+</style>
