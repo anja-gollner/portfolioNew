@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ServiceCard from '../components/ServiceCard.astro';
+import Hero from '../components/Hero.astro'
 import '../styles/global.css';
 ---
 
@@ -18,6 +19,9 @@ import '../styles/global.css';
     <Header />
 
     <main class="container mx-auto p-4 pt-20">
+	<section>
+		<Hero />
+	</section>
       <section id="skills" class="min-h-screen">
         <h2 class="text-3xl font-bold text-primary text-center mb-6">Skills</h2>
         <p class="text-center mb-6">Hier sind meine Fähigkeiten...</p>
