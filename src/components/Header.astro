@@ -8,35 +8,61 @@ const navItems = [
 ];
 ---
 
-<header id="main-header" class="bg-black text-white px-4 py-4 shadow-md fixed w-full z-10 transition-colors duration-300">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
+
+<header id="main-header" class="bg-black text-white px-4 py-4 shadow-md fixed w-full z-10 transition-all duration-300">
   <div class="max-w-[1440px] mx-auto w-full flex items-center justify-between">
     
+    <!-- Logo -->
     <div class="flex items-center">
-      <img src="img/ag-logo.png" alt="Logo" class="h-20">
+      <img src="img/ag-logo.png" alt="Logo" class="h-20 transition-all duration-300 shrink-logo">
     </div>
 
-    <div class="flex items-center space-x-6">
+    <!-- Desktop Navigation -->
+    <div class="hidden lg:flex items-center space-x-6">
       <nav class="flex space-x-6">
         {navItems.map((item) => (
-          <a href={item.href} class="hover:text-gray-300 text-white font-light transition">{item.label}</a>
+          <a href={item.href} class="relative text-white font-light transition group overflow-hidden">
+            <span class="relative z-10 group-hover:text-primary transition">{item.label}</span>
+            <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full"></span>
+          </a>
         ))}
       </nav>
 
+      <!-- CTA -->
       <a href="#contact" class="relative group border border-primary text-primary rounded-full pl-6 pr-14 py-2 inline-flex items-center transition hover:bg-primary hover:text-black">
-  <span class="text-base font-medium">Jetzt Anfragen</span>
-  <span class="absolute right-1 w-9 h-9 bg-primary text-black rounded-full flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
-    →
-  </span>
-</a>
-
+        <span class="text-base font-medium">Jetzt Anfragen</span>
+        <span class="absolute right-1 w-9 h-9 bg-primary text-black rounded-full flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
+          →
+        </span>
+      </a>
     </div>
-    
+
+   <button id="hamburger-btn" class="lg:hidden flex flex-col justify-between w-6 h-5 text-white focus:outline-none relative z-50">
+  <span class="bar top-bar"></span>
+  <span class="bar middle-bar"></span>
+  <span class="bar bottom-bar"></span>
+</button>
+
+  </div>
+
+  <div id="mobile-menu" class="fixed top-0 right-[-160px] h-screen w-[160px] bg-black text-white flex flex-col items-start pt-24 p-6 space-y-6 z-40 transition-all duration-300 lg:hidden">
+    {navItems.map((item) => (
+      <a href={item.href} class="relative text-white font-light transition group overflow-hidden">
+        <span class="relative z-10 group-hover:text-gray-300 transition">{item.label}</span>
+        <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full"></span>
+      </a>
+    ))}
+
+    <!-- CTA im mobilen Menü -->
+    <a href="#contact" class="mt-6 border border-primary text-primary rounded-full px-4 py-2 text-sm inline-flex items-center hover:bg-primary hover:text-black transition">
+      <span class="mr-2">Anfragen</span>
+    </a>
   </div>
 </header>
-
-
-
 
 <script>
   const anchors = document.querySelectorAll('a[href^="#"]');
@@ -61,16 +87,52 @@ const navItems = [
 
 function updateHeaderBackground() {
   if (window.scrollY > 50) {
-    header.classList.add('bg-opacity-70', 'backdrop-blur-md', 'shrink');
+    header.classList.add('bg-opacity-50', 'backdrop-blur-md', 'shrink');
   } else {
-    header.classList.remove('bg-opacity-70', 'backdrop-blur-md', 'shrink');
+    header.classList.remove('bg-opacity-50', 'backdrop-blur-md', 'shrink');
   }
 }
 
 window.addEventListener('scroll', updateHeaderBackground);
 updateHeaderBackground();
 
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const mobileMenu = document.getElementById('mobile-menu');
 
+if (hamburgerBtn && mobileMenu) {
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = hamburgerBtn.classList.toggle('open');
+
+    if (isOpen) {
+      mobileMenu.classList.remove('right-[-160px]');
+      mobileMenu.classList.add('right-0');
+    } else {
+      mobileMenu.classList.remove('right-0');
+      mobileMenu.classList.add('right-[-160px]');
+    }
+  });
+
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburgerBtn.classList.remove('open');
+      mobileMenu.classList.remove('right-0');
+      mobileMenu.classList.add('right-[-160px]');
+    });
+  });
+}
+
+document.addEventListener('click', function (event) {
+  const targetNode = event.target as Node;
+
+  const isClickInsideMenu = mobileMenu?.contains(targetNode);
+  const isClickOnHamburger = hamburgerBtn?.contains(targetNode);
+
+  if (!isClickInsideMenu && !isClickOnHamburger) {
+    hamburgerBtn?.classList.remove('open');
+    mobileMenu?.classList.remove('right-0');
+    mobileMenu?.classList.add('right-[-160px]');
+  }
+});
 
 
 
@@ -87,6 +149,33 @@ updateHeaderBackground();
   height: 82px;          
   padding: 10px 16px;  
 }
+#hamburger-btn {
+  /* Kein display hier! Sonst überschreibt es lg:hidden */
+  width: 24px;
+  height: 18px;
+}
+
+#hamburger-btn .bar {
+  height: 2px;
+  width: 100%;
+  background-color: white;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+#hamburger-btn.open .top-bar {
+  transform: rotate(45deg) translateY(8px);
+}
+
+#hamburger-btn.open .middle-bar {
+  opacity: 0;
+}
+
+#hamburger-btn.open .bottom-bar {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+
 
 
 </style>
