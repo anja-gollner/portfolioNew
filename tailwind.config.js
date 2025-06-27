@@ -22,6 +22,10 @@ export default {
         'black-light': '#1A1A1A',
         'text-beige-dark': '#C5AE90',
       },
+      fontFamily: {
+        sans: ['Barlow', 'sans-serif'],
+        serif: ['DM Serif Display', 'serif'],
+      },
     },
   },
   plugins: [],
