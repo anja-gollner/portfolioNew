@@ -1,1 +1,59 @@
+---
+---
 
+<style>
+  @keyframes fadeSlide {
+    0%, 100% { opacity: 1; }
+    20% { opacity: 0; }
+  }
+
+  .slideshow-image {
+    @apply absolute top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000;
+  }
+
+  .slideshow-image.active {
+    opacity: 1 !important;
+  }
+</style>
+
+<script type="module">
+  let current = 0;
+  const images = [];
+
+  setInterval(() => {
+    if (images.length === 0) return;
+
+    images[current].classList.remove('active');
+    current = (current + 1) % images.length;
+    images[current].classList.add('active');
+  }, 5000);
+
+  window.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.slideshow-image').forEach((img) => images.push(img));
+    if (images.length > 0) images[0].classList.add('active');
+  });
+</script>
+
+<div class="relative w-full h-screen overflow-hidden">
+  <div class="absolute inset-0 z-0">
+    <img src="/img/hero1.png" alt="Hero 1" class="slideshow-image object-cover" />
+    <img src="/img/hero2.png" alt="Hero 2" class="slideshow-image object-cover" />
+    <img src="/img/hero3.png" alt="Hero 3" class="slideshow-image object-cover" />
+  </div>
+
+  <div class="relative z-20 h-full flex flex-col justify-center pl-8 pr-4 max-w-2xl text-white">
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">Webdesign & Software, die Eindruck macht.</h1>
+    <p class="text-lg md:text-xl mb-6">Ich bin Anja Gollner – deine Freelancerin für individuelle Websites, starke Marken & digitale Lösungen.</p>
+   <div class="mt-8">
+  <a href="#contact" class="relative group border border-primary text-primary rounded-full pl-6 pr-14 py-3 inline-flex items-center transition hover:bg-primary hover:text-black shadow-md">
+    <span class="text-base font-medium">Jetzt unverbindlich kontaktieren</span>
+    <span class="absolute right-1 w-9 h-9 bg-primary text-black rounded-full flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
+      →
+    </span>
+  </a>
+</div>
+
+
+
+  </div>
+</div>

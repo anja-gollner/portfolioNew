@@ -9,11 +9,12 @@ const navItems = [
 ---
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 
-<header id="main-header" class="bg-black text-white px-4 py-4 shadow-md fixed w-full z-10 transition-all duration-300">
+<header id="main-header" class="bg-black text-white px-4 py-4 shadow-md fixed w-full z-50 transition-all duration-300">
   <div class="max-w-[1440px] mx-auto w-full flex items-center justify-between">
     
     <div class="flex items-center">
@@ -37,7 +38,7 @@ const navItems = [
       </a>
     </div>
 
-   <button id="hamburger-btn" class="lg:hidden flex flex-col justify-between w-6 h-5 text-white focus:outline-none relative z-50">
+   <button id="hamburger-btn" aria-label="Menü öffnen/schließen" class="lg:hidden flex flex-col justify-between w-6 h-5 text-white focus:outline-none relative z-50">
   <span class="bar top-bar"></span>
   <span class="bar middle-bar"></span>
   <span class="bar bottom-bar"></span>
@@ -137,7 +138,7 @@ document.addEventListener('click', function (event) {
 #main-header {
   height: 112px;         
   padding: 16px 16px;   
-  transition: height 0.3s ease, padding 0.3s ease;
+  transition: height 0.3s ease, padding 0.3s, background-color 0.3s ease, backdrop-filter 0.3s ease;
 }
 
 #main-header.shrink {
