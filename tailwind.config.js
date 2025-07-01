@@ -11,7 +11,7 @@ export default {
         'text': '#1F242C',
         'bg-dark': '#B69974',
         'bg-light': '#FAF9F6',
-        'black': '#2B2B2B',
+        'black': '#101010',
         'text-hover': '#E0D3C3',
         'grey': '#999FA6',
         'grey-text': '#67687A',
