@@ -1,0 +1,47 @@
+---
+const faqs = [
+  {
+    question: "Welche Art von Websites entwickeln Sie für Firmen?",
+    answer: "Ich entwickle maßgeschneiderte Unternehmenswebseiten, von professionellen Landingpages bis zu komplexen Webanwendungen – optimiert für Conversion und Benutzerfreundlichkeit.",
+  },
+  {
+    question: "Was macht Ihre Fullstack-Lösungen besonders?",
+    answer: "Ich kombiniere modernes Design mit effizientem Code und liefere Lösungen, die nicht nur gut aussehen, sondern auch performen – inklusive Backend, Frontend und Datenbankanbindung.",
+  },
+  {
+    question: "Wie können Sie meine Social-Media-Präsenz verbessern?",
+    answer: "Durch gezielte Optimierung Ihrer Online-Auftritte, strategische Inhalte und nahtlose Verlinkung Ihrer Social-Media-Kanäle mit Ihrer Website.",
+  },
+  {
+    question: "Was bedeutet SEO & Performance-Optimierung bei Ihnen?",
+    answer: "Ich sorge für schnelle Ladezeiten, sauberen Code und eine Suchmaschinen-optimierte Struktur – damit Ihre Seite besser gefunden und gerne besucht wird.",
+  },
+  {
+    question: "Welche Applikationen sind für mein Unternehmen möglich?",
+    answer: "Von interaktiven Kundenportalen bis zu internen Tools – ich entwickle genau die Webapplikation, die Ihre Arbeitsprozesse digital unterstützt.",
+  },
+  {
+    question: "Wie lange dauert die Entwicklung einer Webapplikation?",
+    answer: "Je nach Umfang und Anforderungen zwischen 2 und 6 Wochen – inklusive Planung, Entwicklung und Testing.",
+  },
+]
+---
+
+<section class="bg-black text-white py-16 px-4">
+  <div class="max-w-6xl mx-auto text-center mb-12">
+    <h2 class="text-lg tracking-widest text-primary">HÄUFIG GESTELLTE</h2>
+    <h3 class="text-4xl font-bold mt-2">Fragen</h3>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+    {faqs.map(faq => (
+      <details class="bg-zinc-900 rounded-xl px-6 py-4 text-left cursor-pointer transition hover:bg-zinc-800">
+        <summary class="font-medium text-lg flex justify-between items-center">
+          {faq.question}
+          <span class="ml-2 text-primary">▾</span>
+        </summary>
+        <p class="mt-3 text-primary leading-relaxed">{faq.answer}</p>
+      </details>
+    ))}
+  </div>
+</section>

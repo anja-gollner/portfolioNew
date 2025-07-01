@@ -89,10 +89,10 @@
 /* =================== Scrollbar Styling =================== */
 
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #5a5752;
+    background-color: #353330;
     border-radius: 10px;
 }

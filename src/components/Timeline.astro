@@ -1,0 +1,50 @@
+---
+const steps = [
+  {
+    title: "Anfrage",
+    description: "Sie teilen uns Ihre Idee mit.",
+  },
+  {
+    title: "Beratungsgespräch",
+    description: "Wir besprechen Ihre Vision und Ziele.",
+  },
+  {
+    title: "Konzeption",
+    description: "Wir entwickeln ein maßgeschneidertes Konzept.",
+  },
+  {
+    title: "Umsetzung",
+    description: "Ihr Projekt wird professionell umgesetzt.",
+  },
+];
+---
+<section class="bg-black text-primary py-20 px-6">
+  <div class="max-w-7xl mx-auto relative">
+    
+    <!-- Linie (horizontal auf Desktop, vertikal auf Mobile) -->
+    <div class="absolute bg-primary
+                left-1.5 top-0 bottom-0 w-1 
+                md:top-2 md:bottom-auto md:left-0 md:right-0 md:h-1 md:w-full 
+                transform md:-translate-y-1/2">
+    </div>
+
+    <!-- Schritte -->
+    <div class="flex flex-col gap-14 md:flex-row md:justify-between relative z-10">
+      {steps.map((step) => (
+        <div class="flex items-start md:items-center flex-row md:flex-col text-left md:text-center w-full md:w-1/4">
+        
+          <div class="w-4 h-4 bg-primary rounded-full mt-1 md:mt-0 md:mb-4 shrink-0 z-20"></div>
+          
+          <div class="ml-4 md:ml-0">
+            <h4 class="text-white font-semibold">{step.title}</h4>
+            <p class="text-sm mt-1 text-primary text-opacity-90 max-w-[200px]">
+              {step.description}
+            </p>
+          </div>
+
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
