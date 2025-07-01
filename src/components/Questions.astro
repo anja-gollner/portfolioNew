@@ -13,35 +13,98 @@ const faqs = [
     answer: "Durch gezielte Optimierung Ihrer Online-Auftritte, strategische Inhalte und nahtlose Verlinkung Ihrer Social-Media-Kanäle mit Ihrer Website.",
   },
   {
-    question: "Was bedeutet SEO & Performance-Optimierung bei Ihnen?",
+    question: "Was bedeutet SEO & Performance bei Ihnen?",
     answer: "Ich sorge für schnelle Ladezeiten, sauberen Code und eine Suchmaschinen-optimierte Struktur – damit Ihre Seite besser gefunden und gerne besucht wird.",
-  },
-  {
-    question: "Welche Applikationen sind für mein Unternehmen möglich?",
-    answer: "Von interaktiven Kundenportalen bis zu internen Tools – ich entwickle genau die Webapplikation, die Ihre Arbeitsprozesse digital unterstützt.",
   },
   {
     question: "Wie lange dauert die Entwicklung einer Webapplikation?",
     answer: "Je nach Umfang und Anforderungen zwischen 2 und 6 Wochen – inklusive Planung, Entwicklung und Testing.",
   },
-]
+  {
+    question: "Welche Applikationen sind für mein Unternehmen möglich?",
+    answer: "Von interaktiven Kundenportalen bis zu internen Tools – ich entwickle genau die Webapplikation, die Ihre Arbeitsprozesse digital unterstützt.",
+  },
+];
 ---
-
-<section class="bg-black text-white pt-16 pb-0 px-4">
+<section class="bg-black text-white pt-16 pb-0 px-4" id="about">
   <div class="max-w-6xl mx-auto text-center mb-12">
     <h2 class="text-lg tracking-widest text-primary">HÄUFIG GESTELLTE</h2>
     <h3 class="text-4xl font-bold mt-2">Fragen</h3>
   </div>
 
-  <div class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-    {faqs.map(faq => (
-      <details class="bg-zinc-900 rounded-xl px-6 py-4 text-left cursor-pointer transition hover:bg-zinc-800">
-        <summary class="font-medium text-lg flex justify-between items-center">
-          {faq.question}
-          <span class="ml-2 text-primary">▾</span>
-        </summary>
-        <p class="mt-3 text-primary leading-relaxed">{faq.answer}</p>
-      </details>
-    ))}
+  <div
+    id="faq-container"
+    class="max-w-5xl mx-auto flex gap-6"
+  >
+    {/* Linke Spalte */}
+    <div class="flex flex-col gap-6 w-1/2">
+      {faqs.slice(0, 3).map((faq, index) => (
+        <div
+          class="faq-item bg-zinc-900 rounded-xl px-6 py-4 cursor-pointer transition hover:bg-zinc-800 overflow-hidden"
+          data-index={index}
+        >
+          <div class="flex justify-between items-center">
+            <h4 class="font-medium text-lg">{faq.question}</h4>
+            <span class="arrow text-primary transform transition-transform duration-300">▾</span>
+          </div>
+          <div class="answer transition-all duration-500 ease-in-out overflow-hidden text-primary max-h-0 opacity-0">
+            <p class="mt-3 leading-relaxed">{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {/* Rechte Spalte */}
+    <div class="flex flex-col gap-6 w-1/2">
+      {faqs.slice(3).map((faq, index) => (
+        <div
+          class="faq-item bg-zinc-900 rounded-xl px-6 py-4 cursor-pointer transition hover:bg-zinc-800 overflow-hidden"
+          data-index={index + 3}
+        >
+          <div class="flex justify-between items-center">
+            <h4 class="font-medium text-lg">{faq.question}</h4>
+            <span class="arrow text-primary transform transition-transform duration-300">▾</span>
+          </div>
+          <div class="answer transition-all duration-500 ease-in-out overflow-hidden text-primary max-h-0 opacity-0">
+            <p class="mt-3 leading-relaxed">{faq.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
+
+  <script type="module">
+    const items = document.querySelectorAll(".faq-item");
+
+    let selected = -1;
+
+    items.forEach((item, index) => {
+      item.addEventListener("click", () => {
+        const answer = item.querySelector(".answer");
+        const arrow = item.querySelector(".arrow");
+
+        if (selected === index) {
+          answer.style.maxHeight = "0px";
+          answer.style.opacity = "0";
+          arrow.style.transform = "rotate(0deg)";
+          selected = -1;
+        } else {
+          items.forEach((it, i) => {
+            const ans = it.querySelector(".answer");
+            const arr = it.querySelector(".arrow");
+            if (ans && arr) {
+              ans.style.maxHeight = "0px";
+              ans.style.opacity = "0";
+              arr.style.transform = "rotate(0deg)";
+            }
+          });
+
+          answer.style.maxHeight = "500px";
+          answer.style.opacity = "1";
+          arrow.style.transform = "rotate(180deg)";
+          selected = index;
+        }
+      });
+    });
+  </script>
 </section>
