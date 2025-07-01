@@ -1,20 +1,27 @@
-<footer class="bg-black text-primary px-6 py-10 text-sm">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 items-center text-center md:text-left">
+<footer class="relative w-full h-[180px] overflow-hidden text-white text-center">
 
-    <div>
-      <p class="text-primary font-medium">© 2025 Anja Gollner</p>
-    </div>
+ <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0 filter brightness-50">
+  <source src="/video/network.mp4" type="video/mp4" />
+  Dein Browser unterstützt dieses Video nicht.
+</video>
 
-    <div class="flex justify-center gap-6">
-      <a href="/impressum" class="hover:underline hover:text-black-dark transition">Impressum</a>
-      <a href="/datenschutz" class="hover:underline hover:text-black-dark transition">Datenschutz</a>
-    </div>
+  <div class="absolute inset-0 bg-black/60 z-10"></div>
 
-    <div class="md:text-right">
-      <a href="mailto:contact@anja-gollner.com" class="hover:underline hover:text-black-dark transition">
-        contact@anja-gollner.com
-      </a>
-    </div>
+  <div class="relative z-20 max-w-6xl mx-auto px-6 py-10 flex flex-col gap-6 justify-center items-center h-full">
+
+    <img src="/img/ag-logo.png" alt="Anja Gollner Logo" class="h-16" />
+
+    <div class="flex flex-wrap gap-6 justify-center text-sm">
+  <a href="/impressum" class="relative hover:text-primary transition after:absolute after:-bottom-1 after:left-0 after:h-[1px] after:bg-primary after:w-0 hover:after:w-full after:transition-all after:duration-300 after:ease-in-out">Impressum</a>
+  <a href="/datenschutz" class="relative hover:text-primary transition after:absolute after:-bottom-1 after:left-0 after:h-[1px] after:bg-primary after:w-0 hover:after:w-full after:transition-all after:duration-300 after:ease-in-out">Datenschutz</a>
+  <a href="/agb" class="relative hover:text-primary transition after:absolute after:-bottom-1 after:left-0 after:h-[1px] after:bg-primary after:w-0 hover:after:w-full after:transition-all after:duration-300 after:ease-in-out">AGB</a>
+  <a href="https://www.instagram.com/deinprofil" target="_blank" class="relative hover:text-primary transition after:absolute after:-bottom-1 after:left-0 after:h-[1px] after:bg-primary after:w-0 hover:after:w-full after:transition-all after:duration-300 after:ease-in-out">Instagram</a>
+</div>
+
+
+    <p class="text-xs text-white/80">
+      © Anja Gollner. Alle Rechte vorbehalten.
+    </p>
 
   </div>
 </footer>
