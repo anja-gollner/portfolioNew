@@ -1,0 +1,82 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Impressum | Anja Gollner</title>
+    <meta name="description" content="Impressum von Anja Gollner – Webdesign, Logo & Software Freelancerin aus Österreich & Dubai" />
+  </head>
+
+  <body class="bg-neutral text-text overflow-hidden h-screen flex flex-col">
+    <Header class="fixed top-0 left-0 w-full z-30 bg-neutral/80 backdrop-blur-sm h-16" />
+
+    <main class="flex-grow pt-16 pb-16 bg-white/90 backdrop-blur-sm max-w-4xl mx-auto w-full overflow-auto px-6">
+      <h1 class="text-3xl font-bold mb-8 text-center">Impressum</h1>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-2">Angaben gemäß § 5 TMG / E-Commerce Gesetz (Austria)</h2>
+        <p>
+          Anja Gollner<br />
+          Musterstraße 12<br />
+          1010 Wien, Österreich
+        </p>
+        <p class="mt-4">
+          <strong>Telefon:</strong> +43 660 1234567<br />
+          <strong>E-Mail:</strong> <a href="mailto:kontakt@anja-gollner.com" class="text-primary underline">kontakt@anja-gollner.com</a><br />
+          <strong>Webseite:</strong> <a href="https://www.anja-gollner.com" target="_blank" rel="noopener" class="text-primary underline">www.anja-gollner.com</a>
+        </p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-2">Berufsbezeichnung und berufsrechtliche Regelungen</h2>
+        <p>
+          Berufsbezeichnung: Webentwicklerin, Designerin, Software Engineer<br />
+          Zuständige Kammer: Wirtschaftskammer Österreich (WKÖ)<br />
+          Gesetzliche Berufsbezeichnung und berufsrechtliche Regelungen finden Sie auf der Website der WKÖ: <a href="https://www.wko.at" target="_blank" rel="noopener" class="text-primary underline">www.wko.at</a>
+        </p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-2">Haftungsausschluss (Disclaimer)</h2>
+        <p>
+          Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-2">Umsatzsteuer-Identifikationsnummer</h2>
+        <p>
+          Umsatzsteuer-ID gemäß §27a Umsatzsteuergesetz: ATU12345678
+        </p>
+      </section>
+    </main>
+
+    <Footer class="h-16 relative z-10 bg-white" />
+  </body>
+
+  <style>
+    html, body {
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    /* Damit der Footer eine fixe Höhe hat, z.B. 64px = 16 * 4px */
+    footer {
+      height: 4rem;
+    }
+
+    header {
+      height: 4rem;
+    }
+
+    main {
+      /* Höhe automatisch, flex-grow sorgt für den Rest */
+      overflow-y: auto;
+    }
+  </style>
+</html>
