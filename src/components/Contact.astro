@@ -1,3 +1,7 @@
+---
+import ContactFormLoader from './ContactFormLoader.tsx';
+---
+
 <section class="bg-black pb-16 px-6 text-[var(--text)]">
   <div class="bg-primary rounded-2xl p-10 lg:p-16 max-w-6xl mx-auto">
     <div class="grid md:grid-cols-2 gap-10 items-start">
@@ -28,18 +32,29 @@
         </div>
       </div>
 
-      <form class="space-y-5">
-        <input type="text" name="vorname" placeholder="Vorname"
-          class="w-full border-b border-black-dark py-2 bg-transparent outline-none placeholder-black-dark focus:border-black-dark" required />
+      <form id="contactForm" class="space-y-5" novalidate>
+        <div>
+          <input type="text" name="vorname" placeholder="Vorname"
+            class="input-field" required />
+          <p class="error-message hidden text-red-500 text-sm mt-1">Bitte gib deinen Vornamen ein</p>
+        </div>
 
-        <input type="text" name="nachname" placeholder="Nachname"
-          class="w-full border-b border-black-dark py-2 bg-transparent outline-none placeholder-black-dark focus:border-black-dark" required />
+        <div>
+          <input type="text" name="nachname" placeholder="Nachname"
+            class="input-field" required />
+          <p class="error-message hidden text-red-500 text-sm mt-1">Bitte gib deinen Nachnamen ein</p>
+        </div>
 
-        <input type="email" name="email" placeholder="Email"
-          class="w-full border-b border-black-dark py-2 bg-transparent outline-none placeholder-black-dark focus:border-black-dark" required />
+        <div>
+          <input type="email" name="email" placeholder="Email"
+            class="input-field" required />
+          <p class="error-message hidden text-red-500 text-sm mt-1">Bitte gib eine gültige E-Mail ein</p>
+        </div>
 
-        <input type="text" name="projekt" placeholder="Projekt oder Thema"
-          class="w-full border-b border-black-dark py-2 bg-transparent outline-none placeholder-black-dark focus:border-black-dark" />
+        <div>
+          <input type="text" name="projekt" placeholder="Projekt oder Thema"
+            class="input-field" />
+        </div>
 
         <button type="submit"
           class="bg-black-dark text-primary font-semibold px-10 py-2 mt-4 rounded-full hover:bg-black transition">
@@ -47,6 +62,23 @@
         </button>
       </form>
 
+      <div id="popup" class="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg hidden z-50">
+        ✅ Anfrage wurde gesendet – Ich melde mich bei dir!
+      </div>
+
     </div>
   </div>
 </section>
+
+<style>
+  .input-field {
+    @apply w-full border-b border-black-dark py-2 bg-transparent outline-none placeholder-black-dark focus:border-black-dark;
+  }
+
+  .error {
+    border-color: red;
+  }
+</style>
+
+<!-- Hier React-Komponente einbinden: -->
+<ContactFormLoader client:load />
