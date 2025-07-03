@@ -1,16 +1,20 @@
 export function initContactForm() {
   const form = document.querySelector<HTMLFormElement>("#contactForm");
   const popup = document.querySelector<HTMLDivElement>("#popup");
+  const datenschutzCheckbox = form?.querySelector<HTMLInputElement>("input[name='datenschutz']");
+  const datenschutzError = document.getElementById("errorDatenschutz");
 
-  if (!form || !popup) return;
+  if (!form || !popup || !datenschutzCheckbox || !datenschutzError) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     let valid = true;
-    const inputs = form.querySelectorAll<HTMLInputElement>("input");
+    const inputs = form.querySelectorAll<HTMLInputElement>("input:not([type='checkbox'])");
     form.querySelectorAll(".error-message").forEach(el => el.classList.add("hidden"));
     inputs.forEach(input => input.classList.remove("error"));
+    datenschutzCheckbox.classList.remove("error");
+    datenschutzError.classList.add("hidden");
 
     inputs.forEach(input => {
       const val = input.value.trim();
@@ -25,6 +29,12 @@ export function initContactForm() {
         valid = false;
       }
     });
+
+    if (!datenschutzCheckbox.checked) {
+      datenschutzCheckbox.classList.add("error");
+      datenschutzError.classList.remove("hidden");
+      valid = false;
+    }
 
     if (!valid) return;
 
