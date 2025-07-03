@@ -1,10 +1,10 @@
 ---
 const { title = "Anja Gollner - Selbstständig" } = Astro.props;
 const navItems = [
-  { href: "#skills", label: "Skills" },
-  { href: "#about", label: "Über uns" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#contact", label: "Kontakt" },
+  { href: "/#skills", label: "Skills" },
+  { href: "/#about", label: "Über uns" },
+  { href: "/#portfolio", label: "Portfolio" },
+  { href: "/#contact", label: "Kontakt" },
 ];
 ---
 
@@ -17,9 +17,10 @@ const navItems = [
 <header id="main-header" class="bg-gradient-to-b from-[rgba(18,18,18,0.9)] to-[rgba(18,18,18,0.6)] text-white px-4 py-4 shadow-md fixed w-full z-50 transition-all duration-300">
   <div class="max-w-[1440px] mx-auto w-full flex items-center justify-between">
     
-    <div class="flex items-center">
-      <img src="img/ag-logo.png" alt="Logo" class="h-20 transition-all duration-300 shrink-logo">
-    </div>
+   <a href="/#hero" class="flex items-center">
+  <img src="img/ag-logo.png" alt="Logo" class="h-20 transition-all duration-300 shrink-logo" />
+</a>
+
 
     <div class="hidden lg:flex items-center space-x-6">
       <nav class="flex space-x-6">

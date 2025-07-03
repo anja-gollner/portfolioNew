@@ -1,6 +1,5 @@
 ---
 import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 ---
 
 <html lang="de">
@@ -8,21 +7,21 @@ import Footer from '../components/Footer.astro';
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Impressum | Anja Gollner</title>
-    <meta name="description" content="Impressum von Anja Gollner – Webdesign, Logo & Software Freelancerin aus Österreich & Dubai" />
+    <meta name="description" content="Impressum von Anja Gollner – Webdesign, Logo & Software Freelancerin aus Österreich" />
   </head>
 
-  <body class="bg-neutral text-text overflow-hidden h-screen flex flex-col">
-    <Header class="fixed top-0 left-0 w-full z-30 bg-neutral/80 backdrop-blur-sm h-16" />
+  <body class="bg-black text-white overflow-hidden h-screen flex flex-col">
+    <Header />
 
-    <main class="flex-grow pt-16 pb-16 bg-white/90 backdrop-blur-sm max-w-4xl mx-auto w-full overflow-auto px-6">
+    <main class="flex-grow pt-28 pb-16 backdrop-blur-sm max-w-4xl mx-auto w-full overflow-auto px-6">
       <h1 class="text-3xl font-bold mb-8 text-center">Impressum</h1>
 
       <section class="mb-8">
         <h2 class="text-xl font-semibold mb-2">Angaben gemäß § 5 TMG / E-Commerce Gesetz (Austria)</h2>
         <p>
           Anja Gollner<br />
-          Musterstraße 12<br />
-          1010 Wien, Österreich
+          Schildbach 42<br />
+          8230 Hartberg, Österreich
         </p>
         <p class="mt-4">
           <strong>Telefon:</strong> +43 660 1234567<br />
@@ -55,7 +54,6 @@ import Footer from '../components/Footer.astro';
       </section>
     </main>
 
-    <Footer class="h-16 relative z-10 bg-white" />
   </body>
 
   <style>
@@ -64,19 +62,6 @@ import Footer from '../components/Footer.astro';
       margin: 0;
       padding: 0;
       overflow: hidden;
-    }
-    /* Damit der Footer eine fixe Höhe hat, z.B. 64px = 16 * 4px */
-    footer {
-      height: 4rem;
-    }
-
-    header {
-      height: 4rem;
-    }
-
-    main {
-      /* Höhe automatisch, flex-grow sorgt für den Rest */
-      overflow-y: auto;
     }
   </style>
 </html>

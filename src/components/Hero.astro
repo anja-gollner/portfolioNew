@@ -1,4 +1,5 @@
 ---
+const { id = "" } = Astro.props;
 ---
 
 <style>
@@ -28,7 +29,7 @@
   });
 </script>
 
-<div class="w-full h-screen">
+<div id={id} class="w-full h-screen">
   <div class="absolute inset-0 bg-black/40 z-0">
     <img src="/img/hero1.png" alt="Hero 1" class="slideshow-image" />
     <img src="/img/hero2.png" alt="Hero 2" class="slideshow-image" />

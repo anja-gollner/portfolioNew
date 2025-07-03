@@ -1,61 +1,84 @@
 ---
 import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
 ---
 
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Anja Gollner | Webdesign, Logo & Software – Freelancerin aus Österreich & Dubai</title>
-
-    <meta name="description" content="Anja Gollner – Selbstständige Webentwicklerin, Designerin & Software Engineer. Maßgeschneiderte Websites, Logos & digitale Lösungen für Unternehmen & Selbstständige." />
-
-    <meta name="keywords" content="Anja Gollner, Webdesign, Webentwicklung, Freelancer, Softwareentwicklung, Logo Design, Österreich, Selbstständig, Webdesignerin, moderne Webseiten" />
-
-    <meta name="author" content="Anja Gollner" />
-    <meta name="robots" content="index, follow" />
-
-    <meta property="og:title" content="Anja Gollner | Web & Design Freelancerin" />
-    <meta property="og:description" content="Webdesign, Logos & Softwarelösungen aus einer Hand – von Anja Gollner, deiner Freelancerin aus Österreich" />
-    <meta property="og:image" content="https://www.anja-gollner.com/img/ag-preview.jpg" />
-    <meta property="og:url" content="https://www.anja-gollner.com" />
-    <meta property="og:type" content="website" />
-
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <title>Datenschutz | Anja Gollner</title>
+    <meta name="description" content="Datenschutzerklärung von Anja Gollner – Webdesign, Logo & Software Freelancerin aus Österreich" />
   </head>
 
-  <body class="bg-neutral text-text overflow-x-hidden">
-    <Header class="fixed top-0 left-0 w-full z-30 bg-neutral/80 backdrop-blur-sm" />
+  <body class="bg-black text-white overflow-hidden h-screen flex flex-col">
+    <Header />
 
-<main class="relative z-10 bg-white/90 backdrop-blur-sm">
-hallo
-</main>
+    <main class="flex-grow pt-28 pb-16 backdrop-blur-sm max-w-4xl mx-auto w-full overflow-auto px-6">
+      <h1 class="text-3xl font-bold mb-8 text-center">Datenschutzerklärung</h1>
 
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-2">Verantwortliche Stelle</h2>
+        <p>
+          Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br />
+          Anja Gollner<br />
+          Schildbach 42<br />
+          8230 Hartberg, Österreich<br />
+          <strong>E-Mail:</strong> <a href="mailto:contact@anja-gollner.com" class="text-primary underline">contact@anja-gollner.com</a>
+        </p>
+      </section>
 
-    <Footer class="relative z-10 bg-white" />
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-2">Datenschutz auf einen Blick</h2>
+        <p>
+          Der Schutz Ihrer personenbezogenen Daten ist uns ein wichtiges Anliegen. Wir behandeln Ihre Daten vertraulich und entsprechend der geltenden Datenschutzgesetze, insbesondere der Datenschutz-Grundverordnung (DSGVO).
+        </p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-2">Erhebung und Verwendung personenbezogener Daten</h2>
+        <p>
+          Personenbezogene Daten werden nur erhoben, wenn Sie diese freiwillig, beispielsweise im Rahmen einer Kontaktaufnahme, an uns übermitteln. Diese Daten verwenden wir ausschließlich zur Bearbeitung Ihrer Anfrage und geben sie nicht an Dritte weiter, sofern keine gesetzliche Verpflichtung besteht.
+        </p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-2">Cookies</h2>
+        <p>
+          Diese Website verwendet keine Cookies, die personenbezogene Daten speichern oder auswerten.
+        </p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-2">Ihre Rechte als betroffene Person</h2>
+        <p>
+          Sie haben das Recht, jederzeit Auskunft über die zu Ihrer Person gespeicherten Daten zu erhalten. Zudem können Sie die Berichtigung, Löschung oder Einschränkung der Verarbeitung Ihrer Daten verlangen. Wenn Sie der Verarbeitung widersprechen möchten oder eine Einwilligung widerrufen wollen, können Sie sich ebenfalls an uns wenden.
+        </p>
+      </section>
+
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-2">Haftungsausschluss</h2>
+        <p>
+          Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-2">Kontakt</h2>
+        <p>
+          Bei Fragen zum Datenschutz können Sie sich jederzeit an uns wenden:<br />
+          <strong>Anja Gollner</strong><br />
+          E-Mail: <a href="mailto:kontakt@anja-gollner.com" class="text-primary underline">kontakt@anja-gollner.com</a>
+        </p>
+      </section>
+    </main>
   </body>
 
-  <style is:global>
+  <style>
     html, body {
+      height: 100vh;
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
-
-    main {
-      position: relative;
-      z-index: 10;
-    }
-
-    section {
-      width: 100% !important;
-      max-width: 100% !important;
-      margin: 0;
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
+      overflow: hidden;
     }
   </style>
+</html>
