@@ -51,17 +51,15 @@ import ContactFormLoader from './ContactFormLoader.tsx';
     <input type="text" name="projekt" placeholder="Projekt oder Thema" class="input-field" />
   </div>
 
-  <!-- Datenschutz Checkbox -->
   <div class="flex items-center space-x-3">
  <label class="relative flex items-center cursor-pointer select-none text-black-dark text-sm">
   <input type="checkbox" id="datenschutz" name="datenschutz" required
     class="appearance-none w-5 h-5 rounded border border-black-dark bg-primary checked:bg-primary checked:border-primary focus:outline-none focus:ring-2 focus:ring-primary transition peer" />
-  <!-- Haken -->
   <svg class="absolute left-0 w-5 h-5 text-transparent peer-checked:text-black pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
     <polyline points="20 6 9 17 4 12" />
   </svg>
   <span class="ml-7">
-    Ich stimme der <a href="/datenschutz" target="_blank" class="underline hover:text-primary">Datenschutzerklärung</a> zu *
+    Ich stimme der <a href="/datenschutz" target="_blank" class="underline hover:text-white">Datenschutzerklärung</a> zu *
   </span>
 </label>
 
