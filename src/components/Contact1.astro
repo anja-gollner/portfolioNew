@@ -1,0 +1,103 @@
+---
+import ContactFormLoader from './ContactFormLoader.tsx';
+const { id = "" } = Astro.props;
+---
+
+<section id={id} class="pb-16 px-6 text-[var(--text)]">
+  <div class="bg-primary rounded-2xl p-10 lg:p-16 max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+      
+      <div>
+        <h2 class="text-4xl font-semibold mb-4 leading-snug text-black">
+          Deine Website.<br />
+          Deine digitale Lösung.
+        </h2>
+
+        <p class="text-black-dark font-medium uppercase tracking-wide mb-4">
+          Sende mir deine Anfrage
+        </p>
+<p class="leading-relaxed text-black-dark">
+  <span class="hidden sm:inline">
+    Du brauchst eine moderne Website, ein digitales Tool oder einfach jemanden, der deine Idee online zum Leben erweckt?
+  </span>
+  <br class="hidden sm:block" />
+  <br class="hidden sm:block" />
+  Ob Onepager, Web-App oder individuelle Lösung – ich helfe dir, das passende digitale Produkt umzusetzen. <br />
+  Sag mir, was du brauchst – ich melde mich bei dir!
+</p>
+
+
+
+        <div class="flex items-center gap-3 text-black mt-4">
+          <a href="mailto:contact@anja-gollner.com"
+             class="text-sm hover:text-black-dark underline underline-offset-4 transition">
+            contact@anja-gollner.com
+          </a>
+        </div>
+      </div>
+<form id="contactForm" class="space-y-5" novalidate>
+  <div>
+    <input type="text" name="vorname" placeholder="Vorname" class="input-field" required />
+    <p class="error-message hidden text-red-500 text-sm mt-1">Bitte gib deinen Vornamen ein</p>
+  </div>
+
+  <div>
+    <input type="text" name="nachname" placeholder="Nachname" class="input-field" required />
+    <p class="error-message hidden text-red-500 text-sm mt-1">Bitte gib deinen Nachnamen ein</p>
+  </div>
+
+  <div>
+    <input type="email" name="email" placeholder="Email" class="input-field" required />
+    <p class="error-message hidden text-red-500 text-sm mt-1">Bitte gib eine gültige E-Mail ein</p>
+  </div>
+
+  <div>
+    <input type="text" name="projekt" placeholder="Projekt oder Thema" class="input-field" />
+  </div>
+
+  <div class="flex items-center space-x-3">
+ <label class="relative flex items-center cursor-pointer select-none text-black-dark text-sm">
+  <input type="checkbox" id="datenschutz" name="datenschutz" required
+    class="appearance-none w-5 h-5 rounded border border-black-dark bg-primary checked:bg-primary checked:border-primary focus:outline-none focus:ring-2 focus:ring-primary transition peer" />
+  <svg class="absolute left-0 w-5 h-5 text-transparent peer-checked:text-black pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="20 6 9 17 4 12" />
+  </svg>
+  <span class="ml-7">
+    Ich stimme der <a href="/datenschutz" target="_blank" class="underline hover:text-white">Datenschutzerklärung</a> zu *
+  </span>
+</label>
+
+</div>
+<p id="errorDatenschutz" class="error-message hidden text-red-500 text-sm mt-1">Bitte akzeptiere die Datenschutzerklärung</p>
+
+  <button type="submit"
+    class="bg-black-dark text-primary font-semibold px-10 py-2 mt-4 rounded-full border border-transparent hover:bg-primary hover:text-black hover:border-black hover:shadow-lg hover:shadow-primary/60 transition duration-300">
+    anfragen :)
+  </button>
+</form>
+
+
+      <div id="popup" class="fixed bottom-4 right-4 bg-primary text-black px-6 py-3 rounded-lg shadow-lg hidden z-50 border border-black">
+        ✅ Anfrage wurde gesendet – Ich melde mich bei dir!
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+ .input-field {
+  @apply w-full border-b border-black-dark py-2 bg-transparent outline-none placeholder-black-dark focus:border-black-dark;
+}
+
+.error {
+  border-color: red;
+}
+
+.error-message.visible {
+  display: block;
+}
+
+</style>
+
+<ContactFormLoader client:load />

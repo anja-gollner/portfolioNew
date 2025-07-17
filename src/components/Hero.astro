@@ -3,61 +3,160 @@ const { id = "" } = Astro.props;
 ---
 
 <style>
-  .slideshow-image {
-    @apply absolute top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000;
+  .hero-container {
+    @apply relative w-full bg-white overflow-visible;
   }
 
-  .slideshow-image.active {
-    opacity: 1 !important;
+  .content-wrapper {
+    @apply container mx-auto px-6 py-24 flex flex-col items-center justify-center text-center;
+    height: 80vh;
+    position: relative;
+    z-index: 10;
+  }
+
+  .agency-name {
+    @apply text-sm uppercase tracking-widest text-gray-800 mb-6;
+    letter-spacing: 0.2em;
+  }
+
+  .main-headline {
+    @apply text-5xl md:text-7xl lg:text-8xl font-semibold text-gray-900 mb-8;
+    line-height: 1.1;
+  }
+
+  .typewriter {
+    border-right: 2px solid rgb(28, 28, 28);
+    animation: blink-caret 0.75s step-end infinite;
+  }
+
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: rgb(35, 34, 34); }
+  }
+
+  .description {
+    @apply text-lg md:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed;
+  }
+
+  .blue-smoke {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 40%;
+    max-width: 500px;
+    z-index: 1;
+    opacity: 0.8;
+    mix-blend-mode: multiply;
+  }
+  .arrow-circle {
+    position: absolute;
+    right: 100px;
+    bottom: -45px;
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 50%;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+  .arrow-circle img {
+    height: 30px;
+    transition: transform 0.5s ease;
+  }
+
+  .arrow-circle:hover img {
+    animation: bounceArrow 0.8s infinite alternate;
+  }
+
+  @keyframes bounceArrow {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-8px); }
+  }
+
+  @media (max-width: 768px) {
+    .blue-smoke {
+      width: 60%;
+      opacity: 0.6;
+    }
+    
+    .arrow-circle {
+      width: 80px;
+      height: 80px;
+      right: 20px;
+      bottom: -30px;
+    }
   }
 </style>
 
-<script type="module">
-  let current = 0;
-  const images = [];
+<div id={id} class="hero-container">
+  <img src="/img/blue-smoke.png" alt="" class="blue-smoke" />
+  
+  <!-- Pfeil-Kreis rechts unten -->
+  <div class="arrow-circle">
+    <img src="/img/arrow.png" alt="Scroll indicator" class="arrow-icon" />
+  </div>
+  
+  <div class="content-wrapper">
+    <p class="agency-name">DEVELOPER FÜR WEB, APPS, GRAFIK & ANIMATION</p>
+    
+    <h1 class="main-headline">
+      Wir entwickeln<br>
+      maßgeschneiderte<br>
+      <span class="outlined-text">
+        <span id="rotating-text" class="typewriter"></span>
+      </span>
+    </h1>
+    
+    <p class="description">
+      <strong>Wir stärken Ihre Online-Präsenz</strong> und schaffen unvergessliche Erlebnisse 
+      durch erstklassiges Design und hervorragende Usability.
+    </p>
+  </div>
+</div>
 
-  setInterval(() => {
-    if (images.length === 0) return;
-    images[current].classList.remove('active');
-    current = (current + 1) % images.length;
-    images[current].classList.add('active');
-  }, 5000);
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const words = ["Web-Apps", "Websites", "Digitallösungen", "Webdesigns", "Markenauftritte"];
+    const elem = document.getElementById('rotating-text');
+    
+    if (!elem || !words.length) return;
 
-  window.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.slideshow-image').forEach((img) => images.push(img));
-    if (images.length > 0) images[0].classList.add('active');
+    let wordIndex = 0;
+    let isDeleting = false;
+    let txt = '';
+    const wait = 2000;
+    const typeSpeed = 100;
+
+    function typeWriter() {
+      const currentWord = words[wordIndex % words.length];
+      
+      if (isDeleting) {
+        txt = currentWord.substring(0, txt.length - 1);
+      } else {
+        txt = currentWord.substring(0, txt.length + 1);
+      }
+
+      elem.textContent = txt;
+
+      let delta = isDeleting ? typeSpeed / 2 : typeSpeed;
+
+      if (!isDeleting && txt === currentWord) {
+        delta = wait;
+        isDeleting = true;
+      } else if (isDeleting && txt === '') {
+        isDeleting = false;
+        wordIndex++;
+        delta = 500;
+      }
+
+      setTimeout(typeWriter, delta);
+    }
+
+    setTimeout(typeWriter, 500);
   });
 </script>
-
-<div id={id} class="w-full h-screen">
-  <div class="absolute inset-0 bg-black/40 z-0">
-    <img src="/img/hero1.png" alt="Hero 1" class="slideshow-image" />
-    <img src="/img/hero2.png" alt="Hero 2" class="slideshow-image" />
-    <img src="/img/hero3.png" alt="Hero 3" class="slideshow-image" />
-    <img src="/img/hero4.png" alt="Hero 2" class="slideshow-image" />
-    <img src="/img/hero5.png" alt="Hero 3" class="slideshow-image" />
-  </div>
- <div class="w-full h-screen flex justify-center">
-  <div class="relative z-10 h-full flex flex-col justify-center px-6 md:px-8 max-w-[1440px] w-full">
-    <div class="max-w-2xl text-white">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4">
-        Webdesign & Software, die Eindruck macht.
-      </h1>
-      <p class="text-lg md:text-xl mb-6">
-        Ich bin Anja Gollner – deine Freelancerin für individuelle Websites, starke Marken & digitale Lösungen.
-      </p>
-      <div class="mt-8">
-        <a
-          href="#contact"
-          class="relative group border border-primary text-primary rounded-full pl-6 pr-14 py-3 inline-flex items-center transition hover:bg-primary hover:text-black shadow-md"
-        >
-          <span class="text-base font-medium">Jetzt unverbindlich kontaktieren</span>
-          <span
-            class="absolute right-1 w-9 h-9 bg-primary text-black rounded-full flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1"
-          >
-            →
-          </span>
-        </a>
-      </div>
-    </div>
-  </div>

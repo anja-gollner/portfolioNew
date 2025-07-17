@@ -14,7 +14,7 @@ const navItems = [
 </head>
 
 
-<header id="main-header" class="bg-gradient-to-b from-[rgba(18,18,18,0.9)] to-[rgba(18,18,18,0.6)] text-white px-4 py-4 shadow-md fixed w-full z-50 transition-all duration-300">
+<header id="main-header" class="bg-white text-black px-4 py-4 fixed w-full z-50 transition-all duration-300">
   <div class="max-w-[1440px] mx-auto w-full flex items-center justify-between">
     
    <a href="/#hero" class="flex items-center">
@@ -25,7 +25,7 @@ const navItems = [
     <div class="hidden lg:flex items-center space-x-6">
       <nav class="flex space-x-6">
         {navItems.map((item) => (
-          <a href={item.href} class="relative text-white font-light transition group overflow-hidden">
+          <a href={item.href} class="relative text-black font-light transition group overflow-hidden">
             <span class="relative z-10 group-hover:text-primary transition">{item.label}</span>
             <span class="absolute bottom-0 left-0 w-0 h-[1px] bg-primary transition-all duration-300 group-hover:w-full"></span>
           </a>
@@ -39,7 +39,7 @@ const navItems = [
       </a>
     </div>
 
-   <button id="hamburger-btn" aria-label="Menü öffnen/schließen" class="lg:hidden flex flex-col justify-between w-6 h-5 text-white focus:outline-none relative z-50">
+   <button id="hamburger-btn" aria-label="Menü öffnen/schließen" class="lg:hidden flex flex-col justify-between w-6 h-5 text-primary focus:outline-none relative z-50">
   <span class="bar top-bar"></span>
   <span class="bar middle-bar"></span>
   <span class="bar bottom-bar"></span>
