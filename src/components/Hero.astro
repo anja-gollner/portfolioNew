@@ -48,6 +48,7 @@ const { id = "" } = Astro.props;
     opacity: 0.8;
     mix-blend-mode: multiply;
   }
+  
   .arrow-circle {
     position: absolute;
     right: 100px;
@@ -64,20 +65,22 @@ const { id = "" } = Astro.props;
     border: none;
     cursor: pointer;
   }
+  
   .arrow-circle img {
     height: 30px;
-    transition: transform 0.5s ease;
+    transition: transform 0.3s ease;
+    animation: bounceArrow 2s infinite ease-in-out;
   }
 
   .arrow-circle:hover img {
-    animation: bounceArrow 0.8s infinite alternate;
+    animation: none;
+    transform: scale(1.2) translateY(0);
   }
 
   @keyframes bounceArrow {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-8px); }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
   }
-
   @media (max-width: 768px) {
     .blue-smoke {
       width: 60%;
@@ -96,13 +99,12 @@ const { id = "" } = Astro.props;
 <div id={id} class="hero-container">
   <img src="/img/blue-smoke.png" alt="" class="blue-smoke" />
   
-  <!-- Pfeil-Kreis rechts unten -->
-  <div class="arrow-circle">
+  <a href="#skills" class="arrow-circle">
     <img src="/img/arrow.png" alt="Scroll indicator" class="arrow-icon" />
-  </div>
+  </a>
   
   <div class="content-wrapper">
-    <p class="agency-name">DEVELOPER FÜR WEB, APPS, GRAFIK & ANIMATION</p>
+    <p class="agency-name">DIGITALE LÖSUNGEN FÜR WEB, APPS, GRAFIK & ANIMATION</p>
     
     <h1 class="main-headline">
       Wir entwickeln<br>
@@ -113,8 +115,7 @@ const { id = "" } = Astro.props;
     </h1>
     
     <p class="description">
-      <strong>Wir stärken Ihre Online-Präsenz</strong> und schaffen unvergessliche Erlebnisse 
-      durch erstklassiges Design und hervorragende Usability.
+      <strong>Wir stärken Ihre digitale Präsenz</strong> - mit herausragendem Design, durchdachter Funktionalität und User Experience, die begeistert.
     </p>
   </div>
 </div>
